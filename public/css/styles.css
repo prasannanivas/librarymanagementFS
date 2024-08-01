@@ -1,0 +1,29 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  color: #333;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+.navbar {
+  background-color: #007bff !important;
+}
+
+.container {
+  margin-top: 50px;
+}
+
+.text-center {
+  color: #007bff;
+}
