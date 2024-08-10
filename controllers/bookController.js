@@ -31,13 +31,20 @@ exports.getBook = async (req, res) => {
 
 exports.updateBook = async (req, res) => {
   try {
+    const bookId = req.params.id;
     const { title, author, genre, publishedYear } = req.body;
-    const book = await Book.findByIdAndUpdate(
-      req.params.id,
+
+    const updatedBook = await Book.findByIdAndUpdate(
+      bookId,
       { title, author, genre, publishedYear },
-      { new: true }
+      { new: true, runValidators: true }
     );
-    res.json(book);
+
+    if (!updatedBook) {
+      return res.status(404).json({ message: "Book not found" });
+    }
+
+    res.json({ message: "Book updated successfully", updatedBook });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

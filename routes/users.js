@@ -9,6 +9,6 @@ router.get("/profile", auth, UserController.getProfile); // Ensure UserControlle
 router.put("/profile", auth, UserController.updateProfile); // Ensure UserController.updateProfile is defined
 router.get("/", auth, UserController.getAllUsers); // Ensure UserController.getAllUsers is defined
 router.put("/:id/role", auth, UserController.updateUserRole); // Ensure UserController.updateUserRole is defined
-router.put("/:id", auth, UserController.editUser);
+router.put("/:id", auth, UserController.updateUser); // Route for updating user
 
 module.exports = router;

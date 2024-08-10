@@ -103,20 +103,22 @@ exports.updateUserRole = async (req, res) => {
 };
 
 // Edit user membership details
-exports.editUser = async (req, res) => {
+exports.updateUser = async (req, res) => {
   try {
     const userId = req.params.id;
     const { username, email, role } = req.body;
 
-    const user = await User.findByIdAndUpdate(
+    const updatedUser = await User.findByIdAndUpdate(
       userId,
       { username, email, role },
       { new: true, runValidators: true }
-    ).select("-password");
+    ).select("-password"); // Ensure password is not exposed
 
-    if (!user) return res.status(404).json({ message: "User not found" });
+    if (!updatedUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
 
-    res.json(user);
+    res.json({ message: "User updated successfully", updatedUser });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

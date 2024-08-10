@@ -33,6 +33,7 @@ mongoose
   .connect("mongodb://localhost:27017/library", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useFindAndModify: false,
   })
   .then(() => console.log("MongoDB connected..."))
   .catch((err) => console.log(err));

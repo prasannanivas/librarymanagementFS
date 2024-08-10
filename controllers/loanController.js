@@ -59,6 +59,8 @@ exports.payFine = async (req, res) => {
   }
 };
 
+const Book = require("../models/Book"); // Import the Book model
+
 exports.borrowBook = async (req, res) => {
   try {
     const { bookId } = req.body;
